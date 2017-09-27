@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Remind Me</title>
+    <link rel="stylesheet" type="text/css" href="index.css"></link>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        html,
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: "RobotoDraft", "Roboto", sans-serif;
+        }
+        
+        .w3-bar-block .w3-bar-item {
+            padding: 16px
+        }
+    </style>
+    <script src='main.js'></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+    <!-- Side Navigation -->
+    <nav class="w3-sidebar w3-bar-block w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:320px;" id="sidebar">
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-border-bottom w3-large"><!--<img src="actualpathtoimagepng" style="width:60%;">--></a>
+        <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu" class="w3-bar-item w3-button w3-hide-large w3-large">Close <i class="fa fa-remove"></i></a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-dark-grey w3-button w3-hover-black w3-left-align" onclick="document.getElementById('newNoteModal').style.display='block'">New note <i class="w3-padding fa fa-pencil"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-paper-plane w3-margin-right"></i>Settings</a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-hourglass-end w3-margin-right"></i>No idea yet</a>
+        <a href="#" id="deleteAllNotesButton" class="w3-bar-item w3-button"><i class="fa fa-trash w3-margin-right"></i>Delete all notes</a>
+    </nav>
+    <div id="appBody">
+        <div class="w3-container w3-padding-64 w3-center" id="reminders" style="z-index: 3">
+            <h2>Your reminders</h2>
+
+            <div class="w3-row" id="notesRow"><br>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="newNoteModal" class="w3-modal">
+            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+                <div class="w3-center"><br>
+                    <span id="newNoteClose" onclick="document.getElementById('newNoteModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                    <img src="./assets/icons/plus-flat.png" style="width:30%" class="w3-circle w3-margin-top">
+                </div>
+
+                <form class="w3-container">
+                    <div class="w3-section">
+                        <label id="newName"><b>Name</b></label>
+                        <input class="w3-input w3-border-bottom w3-margin-bottom" type="text" id="newNoteName" placeholder="Enter the name" name="name" required>
+                        <label id="newDate"><b>Date</b></label>
+                        <input class="w3-input w3-border-bottom" type="date" id="newNoteDate" name="date">
+                        <label id="newTime"><b>Time</b></label>
+                        <input class="w3-input w3-border-bottom" type="time" id="newNoteTime" name="time">
+                        <label><b>Description</b></label>
+                        <input class="w3-input w3-border" type="text" id="newNoteContent" placeholder="Description of the reminder(optional)" name="description">
+                        <div class="w3-button w3-block w3-green w3-section w3-padding" id="createNoteButton" onclick="note.create(params)">Create</div>
+                        <input class="w3-check w3-margin-top" type="checkbox" id="isImportant"> Mark as important
+                    </div>
+                </form>
+                <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+                    <button id="newNoteCancel" onclick="document.getElementById('newNoteModal').style.display='none'" type="button" class="w3-button w3-red"> Cancel
+                    </button>
+                </div>
+                <!-- Modal script -->
+                <script>
+                    var modal = document.getElementById('newNoteModal');
+
+                    // When the user clicks anywhere outside of the modal, close it
+                    window.onclick = function(event) {
+                        if (event.target == modal) {
+                            modal.style.display = "none";
+                        }
+                    };
+                </script>
+            </div>
+        </div>
+    </div>
+</body>

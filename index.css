@@ -1,0 +1,22 @@
+.w3-button,
+img,
+input,
+button {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+
+
+/*Make pseudo elements editable*/
+
+#newName::after,
+#newDate::after,
+#newTime::after {
+    content: attr(data-content);
+    color: red;
+}
+
+.w3-quarter {
+    margin-left: 25%;
+    margin-bottom: 2%;
+}
